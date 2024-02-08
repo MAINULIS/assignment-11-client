@@ -4,12 +4,26 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const Navbar = () => {
-const {user} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+
+    }
+
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to="/">All Toys</Link></li>
-        <li><Link to="/">My Toys</Link></li>
-        <li><Link to="/">Add A Toy</Link></li>
+        {
+            user && <><li><Link to="/">My Toys</Link></li>
+                <li><Link to="/">Add A Toy</Link></li> </>
+        }
         <li><Link to="/">Blogs</Link></li>
 
     </>
@@ -44,19 +58,26 @@ const {user} = useContext(AuthContext);
                 </ul>
             </div>
             <div className="navbar-end gap-5 text-white">
-                <Link to="register">
-                    <button className="btn gradient-btn text-white">Login</button>
-                </Link>
-                <Link className="hidden lg:flex" to="/profile">
-                    <img
-                        data-te-toggle="tooltip"
-                        title={`Hi! I'm ${user?.displayName}`}
-                        src={user.photoURL || "https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
-                        className="w-12 rounded-full"
-                        alt="Avatar"
-                    />
-                </Link>
-
+                {
+                    user ?
+                        <>
+                            <Link onClick={handleLogOut} to="/login">
+                                <button className="btn gradient-btn text-white">LogOut</button>
+                            </Link>
+                            <Link className="hidden lg:flex" to="/profile">
+                                <img
+                                    data-te-toggle="tooltip"
+                                    title={`Hi! I'm ${user?.displayName}`}
+                                    src={user?.photoURL || "https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
+                                    className="w-12 rounded-full"
+                                    alt="Avatar"
+                                />
+                            </Link>
+                        </> :
+                            <Link onClick={handleLogOut} to="/login">
+                                <button className="btn gradient-btn text-white">Login</button>
+                            </Link> 
+                }
             </div>
         </div>
     );

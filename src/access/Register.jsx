@@ -51,7 +51,7 @@ const Register = () => {
             </div>
             <div className="card shrink-0 w-full  max-w-sm shadow-2xl ">
                 <form onSubmit={handleRegister} className="card-body text-white">
-                    <h1 className="text-4xl text-center text-cyan-800 font-semibold">Sign Up</h1>
+                    <h1 className="text-4xl text-center text-cyan-900 font-semibold">Sign Up</h1>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text text-xl">Name</span>
