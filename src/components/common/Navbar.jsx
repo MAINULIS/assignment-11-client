@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import logo from '../../assets/image.ico'
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const Navbar = () => {
-
+const {user} = useContext(AuthContext);
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to="/">All Toys</Link></li>
@@ -23,7 +25,7 @@ const Navbar = () => {
                         <Link className="md:hidden" to="/profile">
                             <img
                                 data-te-toggle="tooltip"
-                                // title={`Hi! I'm ${user?.displayName}`}
+                                title={`Hi! I'm ${user?.displayName}`}
                                 src={'' || "https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
                                 className="w-12 rounded-full"
                                 alt="Avatar"
@@ -42,14 +44,14 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-5 text-white">
-                <Link>
-                    <button className="btn bg-cyan-950 hover:bg-cyan-900 text-white">Login</button>
+                <Link to="register">
+                    <button className="btn gradient-btn text-white">Login</button>
                 </Link>
                 <Link className="hidden lg:flex" to="/profile">
                     <img
                         data-te-toggle="tooltip"
-                        // title={`Hi! I'm ${user?.displayName}`}
-                        src={'' || "https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
+                        title={`Hi! I'm ${user?.displayName}`}
+                        src={user.photoURL || "https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
                         className="w-12 rounded-full"
                         alt="Avatar"
                     />
