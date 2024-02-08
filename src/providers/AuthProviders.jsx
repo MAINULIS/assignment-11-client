@@ -1,12 +1,13 @@
 import { createContext, useEffect, useState } from "react";
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut} from "firebase/auth"
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
 import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext();
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
-const AuthProviders = ({children}) => {
+const AuthProviders = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -19,22 +20,27 @@ const AuthProviders = ({children}) => {
     // 2. login
     const signIn = (email, password) => {
         setLoading(true);
-       return signInWithEmailAndPassword(auth, email, password);
+        return signInWithEmailAndPassword(auth, email, password);
     }
-     // 3. reset Password
-     const resetPassword = (email) => {
+    // 3. reset Password
+    const resetPassword = (email) => {
         setLoading(true);
-        return sendPasswordResetEmail(auth,email);
+        return sendPasswordResetEmail(auth, email);
+    }
+    // 4. sign in with google
+    const signInWithGoogle = () => {
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider)
     }
 
-    // 4. logOut
+    // 5. logOut
     const logOut = () => {
         setLoading(true);
-       return signOut(auth)
+        return signOut(auth)
     }
 
     // Observe auth state change
-    useEffect( () => {
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             console.log(currentUser);
             setUser(currentUser);
@@ -43,7 +49,7 @@ const AuthProviders = ({children}) => {
         return () => {
             unsubscribe();
         }
-    },[])
+    }, [])
 
     const authInfo = {
         user,
@@ -51,6 +57,7 @@ const AuthProviders = ({children}) => {
         createUser,
         signIn,
         resetPassword,
+        signInWithGoogle,
         logOut,
     }
     return (

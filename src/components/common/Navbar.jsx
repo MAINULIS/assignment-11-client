@@ -40,7 +40,7 @@ const Navbar = () => {
                             <img
                                 data-te-toggle="tooltip"
                                 title={`Hi! I'm ${user?.displayName}`}
-                                src={'' || "https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
+                                src={user?.photoURL || "https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
                                 className="w-12 rounded-full"
                                 alt="Avatar"
                             />
