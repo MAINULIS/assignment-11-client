@@ -5,3 +5,7 @@
 .gradient-btn{
   @apply  bg-gradient-to-r from-indigo-950 via-blue-950  to-indigo-900  bg-clip-padding bg-transparent inline-flex items-center  font-medium  text-white 
 }
+
+.btn2{
+  @apply bg-gradient-to-r from-cyan-950 via-blue-950 to-cyan-950 bg-clip-padding bg-transparent inline-flex items-center  font-medium  text-white 
+}

@@ -14,7 +14,8 @@ const ErrorPage = () => {
                         <span className='sr-only'>Error</span>
                         {status || 404}
                     </h2>
-                    <p className='text-2xl font-semibold md:text-3xl text-red-800 mb-8'>
+                    <p className="text-2xl font-semibold text-cyan-950 md:font-bold md:text-3xl">We Are Sorry, Page Not Found</p>
+                    <p className='lg:text-2xl font-semibold text-red-800 mb-8'>
                         {error?.message}
                     </p>
                     <Link to='/' className='btn gradient-btn'>
