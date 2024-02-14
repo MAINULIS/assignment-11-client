@@ -10,7 +10,7 @@ const GalleryCard = ({toy}) => {
                     <p className="text-2xl font-semibold">{subCategory}</p><br />
                     <p >{shortDescription}</p>
                     <div className="mt-auto flex justify-between">
-                      <p> { price} </p>
+                      <p>${ price} </p>
                       <p className="font-semibold text-cyan-500">Click To See Details</p>
                     </div>
                 </div>
