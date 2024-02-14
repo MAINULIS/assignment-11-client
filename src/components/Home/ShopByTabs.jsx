@@ -1,7 +1,14 @@
-import { useEffect, useState } from 'react';
+import { Rating } from '@smastrom/react-rating';
+import { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import 'react-tabs/style/react-tabs.css';
+import { AuthContext } from '../../providers/AuthProviders';
+
+const notify = () => toast('You have to log in first to view details');
+
 const ShopByTabs = () => {
+  const {user} = useContext(AuthContext);
     const [selectedTab, setSelectedTab] = useState('Sports Car');
     const [data, setData] = useState([]);
 
@@ -40,11 +47,12 @@ const ShopByTabs = () => {
           <ul className="grid my-14 md:grid-cols-2 gap-6 mx-4">
           {data.map((vehicle, index) => (
            <div key={index} >
-            <Link to={`/details/${vehicle._id}`} >
+            <Link onClick={!user && notify}  to={`/details/${vehicle._id}`} >
            <div className='overflow-hidden relative transition duration-200 transform hover:-translate-y-2 rounded shadow-lg hover:shadow-2xl'>
                <img className="h-72" src={vehicle.pictureURL} alt="" />
                <div className='bg-black px-6 py-4 bg-opacity-75 opacity-0 hover:opacity-100 text-slate-200 absolute inset-0 transition-opacity duration-200 flex flex-col'>
-                       <p className="text-2xl font-semibold">{vehicle.subCategory}</p><br />
+                       <p className="text-2xl font-semibold">{vehicle.name}</p><br />
+                       <p className="my-3 w-28"><Rating className='h-10' value={vehicle.rating} readOnly /></p> 
                        <p >{vehicle.shortDescription}</p>
                        <div className="mt-auto flex justify-between">
                          <p> ${ vehicle.price} </p>

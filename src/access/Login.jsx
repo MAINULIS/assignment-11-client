@@ -2,7 +2,7 @@ import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../providers/AuthProviders";
 import Lottie from "lottie-react";
 import animation from "../assets/animation/register.json"
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
@@ -10,6 +10,11 @@ const Login = () => {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
     const emailRef = useRef();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = event => {
         event.preventDefault();
@@ -25,6 +30,7 @@ const Login = () => {
                 setSuccess('User has been successfully logged in.');
                 setError('');
                 form.reset();
+                navigate(from, {replace:true});
             })
             .catch(error => {
                 setError(error.message);

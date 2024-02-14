@@ -2,11 +2,16 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProviders";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa6";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
     const {signInWithGoogle} = useContext(AuthContext);
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleLoginWithGoogle = () => {
         signInWithGoogle()
@@ -15,6 +20,7 @@ const SocialLogin = () => {
            console.log(loggedUse);
             setSuccess('You have successfully signed in');
             setError('');
+            navigate(from, {replace:true})
         })
         .catch(error => {
             setError(error.message);

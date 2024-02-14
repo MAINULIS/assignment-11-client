@@ -13,6 +13,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthProviders>
     <RouterProvider router={router} />
     </AuthProviders>
-  </React.StrictMode>,
+  </React.StrictMode>
   </div>
 )

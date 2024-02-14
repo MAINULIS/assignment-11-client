@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
 import animation from "../assets/animation/register.json"
 import Lottie from "lottie-react";
@@ -10,6 +10,10 @@ const Register = () => {
 
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
 
     const handleRegister = event => {
@@ -35,6 +39,7 @@ const Register = () => {
                 setSuccess(`${name}, Your Account has been successfully created.`);
                 setError('');
                 form.reset();
+                navigate(from, {replace:true});
 
             })
             .catch(error => {

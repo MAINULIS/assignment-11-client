@@ -26,7 +26,7 @@ const Banner = () => {
                 <img src={img2} className="w-5/6 md:pl-52 rounded-xl" />
                 <div className="absolute flex rounded-xl items-center bg-gradient-to-r from-[#151515ef] to-[rgba(21, 21, 21, 0.00)] top-0 bottom-0">
                     <div className='space-y-6 pl-24 md:w-1/3'>
-                        <h2 className='text-5xl md:text-6xl font-semibold text-white'>Zooming Dreams: Kid's Speedster Fantasy</h2>
+                        <h2 className='text-5xl md:text-6xl font-semibold text-white'>Zooming Dreams: Kid`&apos;`s Speedster Fantasy</h2>
                         <p>Rev up imagination with our toy cars! From sleek racers to off-road adventures, endless fun awaits.</p>
                         <div className='flex gap-5'>
                             <button className="btn gradient-btn hover:outline ">Discover Now</button>

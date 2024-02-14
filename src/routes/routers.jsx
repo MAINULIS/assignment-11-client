@@ -5,6 +5,7 @@ import Login from "../access/Login";
 import Register from "../access/Register";
 import Home from "../components/Home/Home";
 import Details from "../components/Details";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
             },
             {
                 path:"/details/:id",
-                element:<Details></Details>,
+                element:<PrivateRoutes><Details></Details></PrivateRoutes>,
                 loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
             }
             
