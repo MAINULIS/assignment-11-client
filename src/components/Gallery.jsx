@@ -9,7 +9,7 @@ const Gallery = () => {
         .then(data => setToys(data))
     },[])
     return (
-      <div>
+      <div  className="md:mx-4">
         <h2 className="text-center font-bold text-4xl mt-20 text-indigo-900 ">Cars Gallery</h2>
         <div className="grid my-14 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {

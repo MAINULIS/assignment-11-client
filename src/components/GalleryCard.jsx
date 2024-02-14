@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const GalleryCard = ({toy}) => {
     const {_id, pictureURL, subCategory,shortDescription, price} = toy;
     return (
-        <Link to={`/toys/${_id}`}>
+        <Link to={`/details/${_id}`}>
         <div className='overflow-hidden relative transition duration-200 transform hover:-translate-y-2 rounded shadow-lg hover:shadow-2xl'>
             <img className="h-72" src={pictureURL} alt="" />
             <div className='bg-black px-6 py-4 bg-opacity-75 opacity-0 hover:opacity-100 text-slate-200 absolute inset-0 transition-opacity duration-200 flex flex-col'>
