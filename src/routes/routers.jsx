@@ -6,6 +6,7 @@ import Register from "../access/Register";
 import Home from "../components/Home/Home";
 import Details from "../components/Details";
 import PrivateRoutes from "./PrivateRoutes";
+import Blogs from "../components/Blogs";
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
+            },
+            {
+                path:'/blogs',
+                element: <Blogs></Blogs>
             },
             {
                 path:"/register",
