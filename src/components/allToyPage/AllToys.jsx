@@ -10,14 +10,27 @@ const AllToys = () => {
             .then(data => setAllToys(data))
     }, [])
     return (
-        <div>
-            {
-                allToys.map(toys => <AllToysTable
-                    key={toys._id}
-                    toys={toys}
-                ></AllToysTable>)
-            }
-
+        <div className="overflow-x-auto">
+            <table className="table table-xs">
+                <thead className=" text-black text-xl">
+                    <tr>
+                        <th>Seller Name</th>
+                        <th>Toy Name</th>
+                        <th>Sub Category</th>
+                        <th>Price</th>
+                        <th>Available Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody className="text-neutral-600 font-bold">
+                            {
+                                allToys.slice(0, 20).map(toys => <AllToysTable
+                                    key={toys._id}
+                                    toys={toys}
+                                ></AllToysTable>)
+                            }
+                </tbody>
+            </table>
         </div>
     );
 };
