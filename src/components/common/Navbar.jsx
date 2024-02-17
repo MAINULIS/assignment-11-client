@@ -19,7 +19,7 @@ const Navbar = () => {
 
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to="/">All Toys</Link></li>
+        <li><Link to="/allToys">All Toys</Link></li>
         {
             user && <><li><Link to="/">My Toys</Link></li>
                 <li><Link to="/">Add A Toy</Link></li> </>
@@ -74,9 +74,9 @@ const Navbar = () => {
                                 />
                             </Link>
                         </> :
-                            <Link onClick={handleLogOut} to="/login">
-                                <button className="btn gradient-btn text-white">Login</button>
-                            </Link> 
+                        <Link onClick={handleLogOut} to="/login">
+                            <button className="btn gradient-btn text-white">Login</button>
+                        </Link>
                 }
             </div>
         </div>

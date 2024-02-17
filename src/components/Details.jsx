@@ -8,7 +8,7 @@ const Details = () => {
     return (
         <div className="md:flex justify-center md:mx-36 gap-8 p-5 ">
             <div className="items-center ">
-            <img className=" h-72 w-full"  src={pictureURL} alt="" />
+            <img className="h-full w-96"  src={pictureURL} alt="" />
             </div>
             <div className="mt-7 md:mt-0 text-gray-500">
                 <h2 className="text-3xl font-bold text-black">{name}</h2>

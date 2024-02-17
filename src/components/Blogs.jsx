@@ -1,7 +1,7 @@
 
 const Blogs = () => {
     return (
-        <div className="mt-10 mx-5 text-green-950">
+        <div className="my-10 mx-5 text-green-950">
             <h2 className="text-3xl font-semibold text-black">1. What is an access token and refresh token? How do they work and where should we store them on the client-side?</h2>
             <p className="text-xl"><span className="text-2xl text-bold underline">Access Token: </span> Access token are temporary credentials that grant access to a protected resources.
                 An access token is a credential used by applications to access protected resources on behalf of a user. It&apos;s commonly used in authentication and authorization mechanisms, particularly in the context of OAuth (Open Authorization) and similar protocols.The access token is used for accessing protected resources until it expires. <br />

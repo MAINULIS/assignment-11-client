@@ -48,8 +48,8 @@ const ShopByTabs = () => {
           {data.map((vehicle, index) => (
            <div key={index} >
             <Link onClick={!user && notify}  to={`/details/${vehicle._id}`} >
-           <div className='overflow-hidden relative transition duration-200 transform hover:-translate-y-2 rounded shadow-lg hover:shadow-2xl'>
-               <img className="h-72" src={vehicle.pictureURL} alt="" />
+           <div className='overflow-hidden relative transition duration-200 transform hover:-translate-y-2 rounded shadow-lg hover:shadow-2xl px-10'>
+               <img className="h-72 w-5/6" src={vehicle.pictureURL} alt="" />
                <div className='bg-black px-6 py-4 bg-opacity-75 opacity-0 hover:opacity-100 text-slate-200 absolute inset-0 transition-opacity duration-200 flex flex-col'>
                        <p className="text-2xl font-semibold">{vehicle.name}</p><br />
                        <p className="my-3 w-28"><Rating className='h-10' value={vehicle.rating} readOnly /></p> 
