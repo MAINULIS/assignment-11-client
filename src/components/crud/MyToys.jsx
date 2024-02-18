@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import MyToyTable from "./MyToyTable";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
     const { user } = useContext(AuthContext);
     const [myToys, setMyToys] = useState([]);
+    const [control, setControl] = useState(false);
 
     const url = `http://localhost:5000/toys?sellerEmail=${user?.email}`
     useEffect(() => {
@@ -18,8 +20,38 @@ const MyToys = () => {
             .then(data => {
                 setMyToys(data)
             })
-    }, [url])
+    }, [url, control])
 
+    // Delete an element
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/toys/${id}`,{
+                    method:'DELETE',
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.deletedCount > 0){
+                        Swal.fire({
+                          title: "Deleted!",
+                          text: "Your Toy has been deleted.",
+                          icon: "success"
+                        });
+                        
+                        setControl(!control)
+                    }
+                })
+            }
+          });
+    }
 
     return (
         <div className="overflow-x-auto">
@@ -41,6 +73,7 @@ const MyToys = () => {
                 myToys.map((toys) => <MyToyTable
                     key= {toys._id}
                     toys= {toys}
+                    handleDelete = {handleDelete}
                 ></MyToyTable>)
             }
             </tbody>
