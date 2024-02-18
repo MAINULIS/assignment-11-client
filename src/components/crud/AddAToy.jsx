@@ -1,9 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const AddAToy = () => {
 const {user} = useContext(AuthContext);
+
+// dorpDown selector
+const subCategory = ["Sports Car", "Police Car", "Truck"];
+const [selectCategory, setSelectCategory] = useState(subCategory[0]);
+
     const handleAddAToy = event => {
         event.preventDefault();
         const form = event.target;
@@ -42,9 +47,12 @@ const {user} = useContext(AuthContext);
                 form.reset();
             }
         })
-
-
     }
+    // Dropdown selector
+    const handleSelectValue = event => {
+        setSelectCategory(event.target.value)
+    }
+
     return (
         <div className="m-5 md:mx-10 mx-auto">
             <h3 className="text-3xl font-bold text-center text-blue-900">Add A New Toy</h3>
@@ -75,7 +83,19 @@ const {user} = useContext(AuthContext);
 
                     <div >
                         <label htmlFor="name"> <span className='text-xl font-semibold text-black'>Sub-Category</span> <br /></label>
-                        <input className='px-4 input input-bordered  rounded-sm w-full md:w-96 bg-white py-1' type="text" name="subCategory" placeholder='Enter Sub Category' required />
+                        <div >
+                        <select className='px-4 rounded-sm input input-bordered bg-white w-full md:w-96 py-1'name="subCategory" value={selectCategory} onChange={handleSelectValue}>
+                            {
+                                subCategory.map((option) => (
+                                    <option
+                                    key={option} value={option}
+                                    >
+                                        {option}
+                                    </option>
+                                ))
+                            }
+                        </select>
+                        </div>
                     </div>
                     <div className="mt-4 md:mt-0">
                         <label htmlFor="name"> <span className='text-xl font-semibold text-black'>Price</span> <br /></label>

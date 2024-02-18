@@ -17,7 +17,7 @@ const AllToysTable = ({ toys,i }) => {
             <td>{price}</td>
             <td>{availableQuantity}</td>
             <Link onClick={!user && notify}
-                to={`/details/${_id}`}><span className=" badge badge-info text-white  mt-3">View Details</span>
+                to={`/details/${_id}`}><span className=" badge badge-info text-white hover:bg-cyan-600  mt-3">View Details</span>
             </Link>
         </tr>
     );
