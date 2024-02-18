@@ -5,12 +5,12 @@ import { AuthContext } from "../../providers/AuthProviders";
 
 const notify = () => toast('You have to log in first to view details');
 
-const AllToysTable = ({ toys }) => {
+const AllToysTable = ({ toys,i }) => {
     const { user } = useContext(AuthContext);
     const { _id, sellerName, subCategory, availableQuantity, name, price } = toys;
 
     return (
-        <tr>
+        <tr> <td>{1+ i}</td>
             <td className="py-4 justify-center">{sellerName}</td>
             <td>{name}</td>
             <td>{subCategory}</td>
@@ -22,5 +22,4 @@ const AllToysTable = ({ toys }) => {
         </tr>
     );
 };
-
 export default AllToysTable;

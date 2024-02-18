@@ -14,6 +14,7 @@ const AllToys = () => {
             <table className="table table-xs">
                 <thead className=" text-black text-xl">
                     <tr>
+                        <th>Serial</th>
                         <th>Seller Name</th>
                         <th>Toy Name</th>
                         <th>Sub Category</th>
@@ -24,9 +25,10 @@ const AllToys = () => {
                 </thead>
                 <tbody className="text-neutral-600 font-bold">
                             {
-                                allToys.slice(0, 20).map(toys => <AllToysTable
+                                allToys.slice(0, 20).map((toys, i )=> <AllToysTable
                                     key={toys._id}
                                     toys={toys}
+                                    i={i}
                                 ></AllToysTable>)
                             }
                 </tbody>

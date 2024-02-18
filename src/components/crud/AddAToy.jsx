@@ -1,12 +1,16 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const AddAToy = () => {
-
+const {user} = useContext(AuthContext);
     const handleAddAToy = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
-        const seller = form.seller.value;
+        const sellerEmail = user?.email;
+        const sellerName = form.seller.value;
+        const date = form.date.value;
         const subCategory = form.subCategory.value;
         const price = form.price.value;
         const rating = form.rating.value;
@@ -14,7 +18,7 @@ const AddAToy = () => {
         const detailDescription = form.dDescription.value;
         const shortDescription = form.sDescription.value;
         const pictureURL = form.url.value;
-        const AddAToy = {name, seller, subCategory, price, rating, availableQuantity, detailDescription, shortDescription, pictureURL};
+        const AddAToy = {name, sellerName, sellerEmail, date, subCategory, price, rating, availableQuantity, detailDescription, shortDescription, pictureURL};
         console.log(AddAToy)
         // now send data to server(post)
         fetch('http://localhost:5000/toys', {
@@ -54,6 +58,17 @@ const AddAToy = () => {
                     <div className="mt-4 md:mt-0">
                         <label htmlFor="name"> <span className='text-xl font-semibold text-black'>Seller Name</span> <br /></label>
                         <input className='px-4 input input-bordered  rounded-sm w-full md:w-96 bg-white py-1' type="text" name="seller" placeholder='Enter Seller Name' required />
+                    </div>
+                </div>
+                <div className='md:flex justify-center gap-5 pb-4'>
+                    <div >
+                        <label htmlFor="=text"> <span className='text-xl font-semibold text-black'>Seller Email</span> <br />
+                            <input className='px-4 rounded-sm input input-bordered bg-white w-full md:w-96 py-1' type="email" name="email" defaultValue={user?.email} placeholder=' Enter Seller Email' required />
+                        </label>
+                    </div>
+                    <div className="mt-4 md:mt-0">
+                        <label htmlFor="date"> <span className='text-xl font-semibold text-black'>Date</span> <br /></label>
+                        <input className='px-4 input input-bordered  rounded-sm w-full md:w-96 bg-white py-1' type="date" name="date" required />
                     </div>
                 </div>
                 <div className='md:flex justify-center gap-4 pb-4'>
