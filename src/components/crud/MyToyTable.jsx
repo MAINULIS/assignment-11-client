@@ -10,7 +10,7 @@ const MyToyTable = ({toys, handleDelete}) => {
             <td>{subCategory}</td>
             <td><p className="my-3 w-24"><Rating className='h-10' value={rating} readOnly /></p></td>
             <td>$ {price}</td>
-            <td><Link  className="badge badge-accent py-3 px-3 text-white">Update</Link></td>
+            <td><Link to={`/update-toy/${_id}`}  className="badge badge-accent py-3 px-3 text-white">Update</Link></td>
             <td><Link onClick={() => handleDelete(_id)} className="badge badge-error py-3 px-3 text-white ">Delete</Link></td>
         </tr>
     );

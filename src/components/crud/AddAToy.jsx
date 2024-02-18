@@ -46,7 +46,7 @@ const {user} = useContext(AuthContext);
 
     }
     return (
-        <div className="m-5 mx-auto">
+        <div className="m-5 md:mx-10 mx-auto">
             <h3 className="text-3xl font-bold text-center text-blue-900">Add A New Toy</h3>
             <form onSubmit={handleAddAToy} className='p-4 mt-12 rounded-md  bg-white'>
                 <div className='md:flex justify-center gap-5 pb-4'>
@@ -107,7 +107,7 @@ const {user} = useContext(AuthContext);
                     </div>
                 </div>
                 <div className='pb-4'>
-                    <label htmlFor="name"> <span className='text-xl font-semibold text-black'>Banner</span> <br /></label>
+                    <label htmlFor="name"> <span className='text-xl font-semibold text-black'>Picture</span> <br /></label>
                     <input className='px-4 input input-bordered  w-full rounded-sm bg-white py-1' type="url" name="url" id="url" placeholder='Enter image url' required />
                 </div>
                 <button type="submit" className="btn px-8 bg-stone-700">Submit</button>
